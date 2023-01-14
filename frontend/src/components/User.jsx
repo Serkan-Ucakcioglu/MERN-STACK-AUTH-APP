@@ -7,10 +7,11 @@ function User() {
   const token = useSelector(selectedToken);
   const dispatch = useDispatch();
   const [refresh, { data, isSuccess }] = useRefreshMutation();
+  console.log(token, "token");
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(addToken(data.accessToken));
+      dispatch(addToken(data));
     }
   }, [isSuccess]);
   return (
@@ -28,11 +29,10 @@ function User() {
         <textarea
           className="mt-2 bg-black text-white"
           cols="30"
+          value={token}
           rows="10"
           disabled
-        >
-          {token}
-        </textarea>
+        ></textarea>
       </div>
     </div>
   );
