@@ -15,7 +15,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [Login, { isSuccess, data }] = useLoginMutation();
+  const [Login, { isSuccess, data, isError }] = useLoginMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -35,6 +35,11 @@ function Login() {
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
             Sign in
           </h1>
+          {isError && (
+            <h2 className="text-red-500 text-center mt-2 font-extrabold">
+              Username or password is incorrect
+            </h2>
+          )}
           <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
             <InputList register={register} errors={errors} />
 
