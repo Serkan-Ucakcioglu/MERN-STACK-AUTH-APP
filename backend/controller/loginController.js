@@ -29,7 +29,9 @@ const loginCheck = async (req, res) => {
     const checkPass = bcrypt.compare(password, checkuser.password);
     let accesstoken;
     if (checkPass) {
-      accesstoken = jwt.sign({ id: checkuser._id }, process.env.ACCESS_TOKEN);
+      accesstoken = jwt.sign({ id: checkuser._id }, process.env.ACCESS_TOKEN, {
+        expiresIn: "15m",
+      });
     }
     const refresh = jwt.sign({ id: checkuser._id }, process.env.REFRESH_TOKEN);
 
