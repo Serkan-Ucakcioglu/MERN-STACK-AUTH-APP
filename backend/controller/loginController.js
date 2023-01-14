@@ -30,22 +30,15 @@ const loginCheck = async (req, res) => {
     let accesstoken;
     if (checkPass) {
       accesstoken = jwt.sign({ id: checkuser._id }, process.env.ACCESS_TOKEN, {
-        expiresIn: "15m",
+        expiresIn: "1m",
       });
     }
     const refresh = jwt.sign({ id: checkuser._id }, process.env.REFRESH_TOKEN);
 
-    res.cookie("jwta", accesstoken, {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
-
     res.cookie("jwt", refresh, {
-      httpOnly: true,
+      httpOnly: false,
       sameSite: "None",
-      secure: true,
+      secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -57,8 +50,8 @@ const loginCheck = async (req, res) => {
 
 const refresh = async (req, res) => {
   try {
-    const cookie = await req.cookies;
-
+    const cookie = req.cookies;
+    console.log(cookie);
     if (!cookie.jwt) return res.status(404).json("token please");
 
     const refresh = cookie.jwt;
@@ -68,6 +61,7 @@ const refresh = async (req, res) => {
         return res.status(404).json(err);
       }
       const user = await Users.findOne({ _id: decoded.id });
+
       if (!user) return res.status(404).json("no user");
 
       const access = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN, {

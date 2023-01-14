@@ -11,10 +11,12 @@ app.use(
   cors({
     origin: true,
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", loginRoute);
 
