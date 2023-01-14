@@ -1,4 +1,5 @@
 const express = require("express");
+const authToken = require("../middleware/authtoken");
 const {
   loginCheck,
   register,
@@ -8,5 +9,5 @@ const router = express.Router();
 
 router.post("/login", loginCheck);
 router.post("/register", register);
-router.post("/refresh", refresh);
+router.post("/refresh", authToken, refresh);
 module.exports = router;

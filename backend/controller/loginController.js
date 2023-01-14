@@ -33,6 +33,13 @@ const loginCheck = async (req, res) => {
     }
     const refresh = jwt.sign({ id: checkuser._id }, process.env.REFRESH_TOKEN);
 
+    res.cookie("jwta", accesstoken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     res.cookie("jwt", refresh, {
       httpOnly: true,
       sameSite: "None",
@@ -49,7 +56,6 @@ const loginCheck = async (req, res) => {
 const refresh = async (req, res) => {
   try {
     const cookie = await req.cookies;
-    console.log(cookie);
 
     if (!cookie.jwt) return res.status(404).json("token please");
 
