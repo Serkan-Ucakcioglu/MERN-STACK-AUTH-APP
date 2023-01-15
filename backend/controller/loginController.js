@@ -26,7 +26,10 @@ const loginCheck = async (req, res) => {
 
     if (!checkuser) return res.status(404).json("No user");
 
-    const checkPass = bcrypt.compare(password, checkuser.password);
+    const checkPass = await bcrypt.compare(password, checkuser.password);
+
+    if (!checkPass) return res.status(404).json("error");
+
     let accesstoken;
     if (checkPass) {
       accesstoken = jwt.sign({ id: checkuser._id }, process.env.ACCESS_TOKEN, {
