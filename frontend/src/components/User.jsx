@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToken, removeToken, selectedToken } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import {
-  useLogoutMutation,
-  useRefreshMutation,
-  useTestMutation,
+  useLazyLogoutQuery,
+  useLazyRefreshQuery,
+  useLazyTestQuery,
 } from "../features/login/loginSlice";
 
 function User() {
@@ -13,16 +13,15 @@ function User() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [refresh, { data, isSuccess }] = useRefreshMutation();
-  const [Test] = useTestMutation();
-  const [Logout] = useLogoutMutation();
+  const [refresh, { data, isSuccess }] = useLazyRefreshQuery();
+  const [test] = useLazyTestQuery();
+  const [Logout] = useLazyLogoutQuery();
 
   const logOut = () => {
     Logout();
     dispatch(removeToken());
     navigate("/login");
   };
-  console.log(token, "token");
 
   useEffect(() => {
     if (isSuccess) {
@@ -36,7 +35,7 @@ function User() {
     >
       <div className="w-1/2 h-[500px] bg-black p-3 flex flex-col">
         <button
-          onClick={refresh}
+          onClick={() => refresh()}
           className="h-8 w-[80px] rounded border-white border text-black bg-white"
         >
           refresh
@@ -55,7 +54,7 @@ function User() {
           LogOut
         </button>
         <button
-          onClick={Test}
+          onClick={() => test()}
           className="h-8 mt-2 w-[80px] rounded border-white border text-black bg-white"
         >
           {" "}

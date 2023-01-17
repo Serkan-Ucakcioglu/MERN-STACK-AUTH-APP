@@ -2,26 +2,26 @@ import { apiSlice } from "../../api/apiSlice";
 
 const loginSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    Login: build.mutation({
+    Login: build.query({
       query: (body) => ({
         url: "/login",
         method: "POST",
         body,
       }),
     }),
-    Refresh: build.mutation({
+    Refresh: build.query({
       query: (body) => ({
         url: "/refresh",
         method: "GET",
       }),
     }),
-    Logout: build.mutation({
+    Logout: build.query({
       query: () => ({
         url: "/logout",
         method: "POST",
       }),
     }),
-    Test: build.mutation({
+    Test: build.query({
       query: () => ({
         url: "/test",
         method: "POST",
@@ -31,8 +31,8 @@ const loginSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useLoginMutation,
-  useRefreshMutation,
-  useLogoutMutation,
-  useTestMutation,
+  useLazyLoginQuery,
+  useLazyRefreshQuery,
+  useLazyLogoutQuery,
+  useLazyTestQuery,
 } = loginSlice;

@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/login", loginCheck);
 router.post("/register", register);
 router.get("/refresh", refresh);
-router.post("/logout", authToken, logout);
+router.post("/logout", logout);
 router.post("/test", authToken, (req, res) => {
   res.status(200).json("testing success");
 });

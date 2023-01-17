@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { addToken, selectedToken } from "../authSlice";
 import InputList from "./InputList";
-import { useLoginMutation } from "./loginSlice";
+import { useLazyLoginQuery } from "./loginSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
@@ -16,7 +16,7 @@ function Login() {
   const token = useSelector(selectedToken);
   const navigate = useNavigate();
 
-  const [Login, { isSuccess, data, isError }] = useLoginMutation();
+  const [Login, { isSuccess, data, isError }] = useLazyLoginQuery();
   useEffect(() => {
     if (isSuccess) {
       dispatch(addToken(data.accessToken));
