@@ -57,8 +57,7 @@ function User() {
           onClick={() => test()}
           className="h-8 mt-2 w-[80px] rounded border-white border text-black bg-white"
         >
-          {" "}
-          test{" "}
+          test
         </button>
       </div>
     </div>
