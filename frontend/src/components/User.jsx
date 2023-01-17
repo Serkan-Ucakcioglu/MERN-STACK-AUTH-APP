@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useLogoutMutation,
   useRefreshMutation,
+  useTestMutation,
 } from "../features/login/loginSlice";
 
 function User() {
@@ -13,6 +14,7 @@ function User() {
   const navigate = useNavigate();
 
   const [refresh, { data, isSuccess }] = useRefreshMutation();
+  const [Test] = useTestMutation();
   const [Logout] = useLogoutMutation();
 
   const logOut = () => {
@@ -20,6 +22,7 @@ function User() {
     dispatch(removeToken());
     navigate("/login");
   };
+  console.log(token, "token");
 
   useEffect(() => {
     if (isSuccess) {
@@ -50,6 +53,13 @@ function User() {
           className="h-8 w-[80px] rounded border-white border text-black bg-white"
         >
           LogOut
+        </button>
+        <button
+          onClick={Test}
+          className="h-8 mt-2 w-[80px] rounded border-white border text-black bg-white"
+        >
+          {" "}
+          test{" "}
         </button>
       </div>
     </div>

@@ -12,7 +12,7 @@ const loginSlice = apiSlice.injectEndpoints({
     Refresh: build.mutation({
       query: (body) => ({
         url: "/refresh",
-        method: "POST",
+        method: "GET",
       }),
     }),
     Logout: build.mutation({
@@ -21,8 +21,18 @@ const loginSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+    Test: build.mutation({
+      query: () => ({
+        url: "/test",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRefreshMutation, useLogoutMutation } =
-  loginSlice;
+export const {
+  useLoginMutation,
+  useRefreshMutation,
+  useLogoutMutation,
+  useTestMutation,
+} = loginSlice;

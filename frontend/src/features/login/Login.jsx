@@ -17,7 +17,6 @@ function Login() {
   const navigate = useNavigate();
 
   const [Login, { isSuccess, data, isError }] = useLoginMutation();
-  console.log(token);
   useEffect(() => {
     if (isSuccess) {
       dispatch(addToken(data.accessToken));

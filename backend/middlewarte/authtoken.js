@@ -9,7 +9,7 @@ const authToken = (req, res, next) => {
 
   jwt.verify(token, process.env.ACCESS_TOKEN, (err) => {
     if (err) {
-      return res.status(404).json(err);
+      return res.status(401).json(err);
     }
     next();
   });
