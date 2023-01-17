@@ -7,7 +7,7 @@ function RequireAuth() {
   if (token) {
     return <Outlet />;
   } else {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 }
 
