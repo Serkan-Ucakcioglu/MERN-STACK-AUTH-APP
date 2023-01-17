@@ -1,5 +1,5 @@
 import {
-  createHashRouter,
+  createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
@@ -8,10 +8,10 @@ import RequireAuth from "../components/RequireAuth";
 import User from "../components/User";
 import Login from "../features/login/Login";
 
-const router = createHashRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route element={<RequireAuth />}>
         <Route path="/user" element={<User />} />
       </Route>

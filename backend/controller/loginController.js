@@ -39,9 +39,9 @@ const loginCheck = async (req, res) => {
     const refresh = jwt.sign({ id: checkuser._id }, process.env.REFRESH_TOKEN);
 
     res.cookie("jwt", refresh, {
-      httpOnly: false,
+      httpOnly: true,
       sameSite: "None",
-      secure: false,
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -77,8 +77,16 @@ const refresh = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  const cookies = req.cookies;
+  if (!cookies?.jwt) return res.sendStatus(204);
+  res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
+  res.json({ message: "log out " });
+};
+
 module.exports = {
   loginCheck,
   register,
   refresh,
+  logout,
 };
