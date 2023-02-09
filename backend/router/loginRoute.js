@@ -5,7 +5,7 @@ const {
   refresh,
   logout,
 } = require("../controller/loginController");
-const authToken = require("../middlewarte/authtoken");
+const authToken = require("../middleware/authtoken");
 const router = express.Router();
 
 router.post("/login", loginCheck);
