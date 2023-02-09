@@ -1,5 +1,8 @@
 # MERN-STACK-AUTH-APP
 
+### About 
+you need to connect your own mongodb in order to use
+
 <img width="775" alt="image" src="https://user-images.githubusercontent.com/98692987/212529269-4baaea4c-b92f-4e89-8f47-8d671d716a9e.png">
 
 ### Refresh Token JWT
