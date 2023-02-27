@@ -1,8 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 const tokens = localStorage.getItem("token");
 
-const initialState = {
+interface IToken {
+  token: String | null;
+}
+
+const initialState: IToken = {
   token: null || tokens,
 };
 
@@ -12,7 +17,7 @@ const authSlice = createSlice({
   reducers: {
     addToken: (state, { payload }) => {
       state.token = payload;
-      localStorage.setItem("token", state.token);
+      localStorage.setItem("token", payload);
     },
     removeToken: (state) => {
       state.token = null;
@@ -20,7 +25,7 @@ const authSlice = createSlice({
     },
   },
 });
-export const selectedToken = (state) => state.authSlice.token;
+export const selectedToken = (state: RootState) => state.authSlice.token;
 
 export default authSlice.reducer;
 export const { addToken, removeToken } = authSlice.actions;
