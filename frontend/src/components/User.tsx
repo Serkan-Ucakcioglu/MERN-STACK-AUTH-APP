@@ -9,7 +9,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
 function User() {
-  const token: String | null = useAppSelector(selectedToken);
+  const token = useAppSelector(selectedToken);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
