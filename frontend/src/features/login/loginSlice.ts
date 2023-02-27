@@ -8,7 +8,7 @@ export interface ILOGIN {
 const loginSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     Login: build.query({
-      query: (body) => ({
+      query: (body: ILOGIN) => ({
         url: "/login",
         method: "POST",
         body,
