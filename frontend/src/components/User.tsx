@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { addToken, removeToken, selectedToken } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,10 +6,11 @@ import {
   useLazyRefreshQuery,
   useLazyTestQuery,
 } from "../features/login/loginSlice";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
 function User() {
-  const token = useSelector(selectedToken);
-  const dispatch = useDispatch();
+  const token: String | null = useAppSelector(selectedToken);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [refresh, { data, isSuccess }] = useLazyRefreshQuery();
