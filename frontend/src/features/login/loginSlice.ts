@@ -1,5 +1,10 @@
 import { apiSlice } from "../../api/apiSlice";
 
+export interface ILOGIN {
+  username: String;
+  password: Number;
+}
+
 const loginSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     Login: build.query({
