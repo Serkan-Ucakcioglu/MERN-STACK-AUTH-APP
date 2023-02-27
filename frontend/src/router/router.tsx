@@ -4,9 +4,9 @@ import {
   Route,
 } from "react-router-dom";
 import App from "../App";
+import Login from "../features/login/Login";
 import RequireAuth from "../components/RequireAuth";
 import User from "../components/User";
-import Login from "../features/login/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

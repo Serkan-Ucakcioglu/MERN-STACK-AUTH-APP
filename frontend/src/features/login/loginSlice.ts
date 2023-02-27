@@ -10,7 +10,7 @@ const loginSlice = apiSlice.injectEndpoints({
       }),
     }),
     Refresh: build.query({
-      query: (body) => ({
+      query: () => ({
         url: "/refresh",
         method: "GET",
       }),
