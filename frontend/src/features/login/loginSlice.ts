@@ -14,19 +14,19 @@ const loginSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    Refresh: build.query({
+    Refresh: build.query<ILOGIN, null>({
       query: () => ({
         url: "/refresh",
         method: "GET",
       }),
     }),
-    Logout: build.query({
+    Logout: build.query<ILOGIN, null>({
       query: () => ({
         url: "/logout",
         method: "POST",
       }),
     }),
-    Test: build.query({
+    Test: build.query<ILOGIN, null>({
       query: () => ({
         url: "/test",
         method: "POST",

@@ -44,9 +44,10 @@ function User() {
           className="mt-2 bg-black text-white"
           cols={30}
           rows={10}
-          value={token}
           disabled
-        ></textarea>
+        >
+          {token}
+        </textarea>
         <button
           onClick={logOut}
           className="h-8 w-[80px] rounded border-white border text-black bg-white"
