@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { addToken, selectedToken } from "../authSlice";
 import InputList from "./InputList";
 import { useLazyLoginQuery } from "./loginSlice";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+
+interface IFormInput {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
 
 function Login() {
   const {
@@ -12,8 +18,8 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const dispatch = useDispatch();
-  const token = useSelector(selectedToken);
+  const dispatch = useAppDispatch();
+  const token = useAppSelector(selectedToken);
   const navigate = useNavigate();
 
   const [Login, { isSuccess, data, isError }] = useLazyLoginQuery();
