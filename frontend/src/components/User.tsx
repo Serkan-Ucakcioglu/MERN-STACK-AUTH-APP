@@ -21,7 +21,7 @@ function User() {
   const logOut = () => {
     Logout();
     dispatch(removeToken());
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {
