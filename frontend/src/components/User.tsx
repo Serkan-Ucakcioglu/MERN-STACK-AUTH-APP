@@ -5,7 +5,7 @@ import {
   ILOGIN,
   useLazyLogoutQuery,
   useLazyTestQuery,
-  useRefreshMutation,
+  useLazyRefreshQuery,
 } from "../features/login/loginSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
@@ -14,7 +14,7 @@ function User() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [refresh, { data, isSuccess }] = useRefreshMutation();
+  const [refresh, { data, isSuccess }] = useLazyRefreshQuery();
   const [test] = useLazyTestQuery();
   const [Logout] = useLazyLogoutQuery();
 
