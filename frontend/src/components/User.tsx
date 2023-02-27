@@ -42,9 +42,9 @@ function User() {
         </button>
         <textarea
           className="mt-2 bg-black text-white"
-          cols="30"
+          cols={30}
+          rows={10}
           value={token}
-          rows="10"
           disabled
         ></textarea>
         <button
