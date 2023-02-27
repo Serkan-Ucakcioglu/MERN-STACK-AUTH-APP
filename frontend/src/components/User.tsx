@@ -3,8 +3,8 @@ import { addToken, removeToken, selectedToken } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import {
   useLazyLogoutQuery,
-  useLazyRefreshQuery,
   useLazyTestQuery,
+  useRefreshMutation,
 } from "../features/login/loginSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
@@ -13,7 +13,7 @@ function User() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [refresh, { data, isSuccess }] = useLazyRefreshQuery();
+  const [refresh, { data, isSuccess }] = useRefreshMutation();
   const [test] = useLazyTestQuery();
   const [Logout] = useLazyLogoutQuery();
 

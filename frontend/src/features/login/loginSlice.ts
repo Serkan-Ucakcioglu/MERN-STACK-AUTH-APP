@@ -14,7 +14,7 @@ const loginSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    Refresh: build.query<ILOGIN, null>({
+    Refresh: build.mutation<ILOGIN, null>({
       query: () => ({
         url: "/refresh",
         method: "GET",
@@ -37,7 +37,7 @@ const loginSlice = apiSlice.injectEndpoints({
 
 export const {
   useLazyLoginQuery,
-  useLazyRefreshQuery,
+  useRefreshMutation,
   useLazyLogoutQuery,
   useLazyTestQuery,
 } = loginSlice;
