@@ -24,7 +24,7 @@ function Login() {
     }
   }, [isSuccess]);
 
-  const onSubmit = (datas) => {
+  const onSubmit = (datas: ILOGIN) => {
     Login(datas);
   };
 

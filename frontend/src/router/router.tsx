@@ -12,7 +12,7 @@ import User from "../components/User";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/login" element={<Login />} />
+      <Route index element={<Login />} />
       <Route element={<RequireAuth />}>
         <Route path="/user" element={<User />} />
       </Route>
