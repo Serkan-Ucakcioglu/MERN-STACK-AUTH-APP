@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { addToken, removeToken, selectedToken } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import {
+  ILOGIN,
   useLazyLogoutQuery,
   useLazyTestQuery,
   useRefreshMutation,
@@ -55,7 +56,7 @@ function User() {
           LogOut
         </button>
         <button
-          onClick={() => test()}
+          onClick={() => test<null, boolean>()}
           className="h-8 mt-2 w-[80px] rounded border-white border text-black bg-white"
         >
           test
