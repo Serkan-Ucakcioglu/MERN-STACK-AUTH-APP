@@ -18,7 +18,7 @@ function User() {
   const [Logout] = useLazyLogoutQuery();
 
   const logOut = () => {
-    Logout();
+    Logout("t");
     dispatch(removeToken());
     navigate("/");
   };
@@ -35,7 +35,7 @@ function User() {
     >
       <div className="w-1/2 h-[500px] bg-black p-3 flex flex-col">
         <button
-          onClick={() => refresh()}
+          onClick={() => refresh("token")}
           className="h-8 w-[80px] rounded border-white border text-black bg-white"
         >
           refresh
@@ -55,7 +55,7 @@ function User() {
           LogOut
         </button>
         <button
-          onClick={() => test()}
+          onClick={() => test("token")}
           className="h-8 mt-2 w-[80px] rounded border-white border text-black bg-white"
         >
           test
