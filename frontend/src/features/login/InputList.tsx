@@ -1,6 +1,13 @@
 import React from "react";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { ILOGIN } from "./loginSlice";
 
-function InputList({ register, errors }) {
+type IFORM = {
+  register: UseFormRegister<ILOGIN>;
+  errors: FieldErrors<ILOGIN>;
+};
+
+function InputList({ register, errors }: IFORM) {
   return (
     <>
       <div className="mb-2">

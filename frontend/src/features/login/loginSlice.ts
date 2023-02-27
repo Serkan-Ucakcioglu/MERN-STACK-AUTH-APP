@@ -2,7 +2,7 @@ import { apiSlice } from "../../api/apiSlice";
 
 export interface ILOGIN {
   username: String;
-  password: Number;
+  password: string;
 }
 
 const loginSlice = apiSlice.injectEndpoints({
