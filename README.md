@@ -1,6 +1,7 @@
 # MERN-STACK-AUTH-APP
 
-### About 
+### About
+I wrote it in react javascript at first, then I translated it in react typescript.<br>
 You need to connect your own mongodb in order to use.
 
 ### Login Page
