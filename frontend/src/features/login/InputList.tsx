@@ -10,7 +10,7 @@ type IFORM = {
 function InputList({ register, errors }: IFORM) {
   return (
     <>
-      <div className="mb-2">
+      <div className="mb-4">
         <label
           htmlFor="email"
           className="block text-sm font-semibold text-gray-800"
@@ -36,7 +36,7 @@ function InputList({ register, errors }: IFORM) {
           {errors?.username?.message}
         </span>
       </div>
-      <div className="mb-2">
+      <div className="mt-4">
         <label
           htmlFor="password"
           className="block text-sm font-semibold text-gray-800"
